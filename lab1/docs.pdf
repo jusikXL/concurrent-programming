@@ -1,0 +1,1218 @@
+<html><head><title>Lab 1: Trainspotting</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body class="pdf en-US" lang="en-US"><article id="10306135-8789-80d3-8150-fe1fde5b0862" class="page sans"><header><h1 class="page-title"><strong>Lab 1: Trainspotting</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="10406135-8789-806a-bd9c-eb0178dfd82d" class="">This page is available live at <a href="https://www.notion.so/Lab-1-Trainspotting-10306135878980d38150fe1fde5b0862?pvs=21">Lab 1: Trainspotting</a>. I highly recommend visiting it.</p><h1 id="10406135-8789-8011-b83e-f7138db54000" class=""><mark class="highlight-blue">Table of contents</mark></h1><nav id="10306135-8789-80a9-945a-d3c616bd03a6" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10406135-8789-8011-b83e-f7138db54000"><mark class="highlight-blue">Table of contents</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10306135-8789-80be-be00-e10075fe0e0c"><mark class="highlight-blue">Choice of critical sections</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10306135-8789-8098-8bc4-f70a155db275">Stations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5704651-67d2-4272-a705-1b581be52781">Stone and River Tracks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10306135-8789-804f-b910-d3aa2c8693df">Metal Track</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#48493572-4990-48b4-b301-641e22e723d6">Diamond Crossing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10306135-8789-805e-bacb-e7618ef80f95">Managing Critical Sections Programmatically</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0e6f0a89-061b-476e-987d-daa2d7020761"><mark class="highlight-blue">Placement of the sensors</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10406135-8789-8065-8a8b-c04a27b1ec35">Direction Enum</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04fe6978-b972-41cd-9f73-e5cdc90a13d3">Sensor Case Enum</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10406135-8789-8006-8dc5-f09baa578b87">Teal</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10306135-8789-8032-aa5e-d82f3ab54884">Green</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10406135-8789-80b4-866b-f9647ca346b6">Orange</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10406135-8789-805b-9974-e33acabf3ed0">Pink</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10406135-8789-8028-9e1c-ca7deb2dceb2">Yellow</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10406135-8789-80fd-b7f3-f0fdd3a83c2a">Purple</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4a298195-9301-401c-889d-08ff01246613">Note</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10406135-8789-80de-b91f-e7a102a9bf1d"><mark class="highlight-blue">Maximum train speed</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10406135-8789-808b-8e17-c0c9d25963e1"><mark class="highlight-blue">How the solution was tested</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#10406135-8789-806e-99f8-e1dcf54ad0b8"><mark class="highlight-blue">Listing of developed programs</mark></a></div></nav><h1 id="10306135-8789-80be-be00-e10075fe0e0c" class=""><mark class="highlight-blue">Choice of critical sections</mark></h1><figure id="10306135-8789-8057-b042-c29831d078bd" class="image"><img style="width:816px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/7e26b0d6-290e-44d4-b791-8d21e74a5fc0/6d245f6c-1c93-4f16-ba02-3dc0266f33c1/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240917T183619Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=fed9cddc5bf59a2b7b9d18da0df8a3004f357fce92fce8883fe2279b2680ed08&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject"/><figcaption>Fig 1. Critical sections.</figcaption></figure><p id="8e876398-04b4-4b6c-9bb7-c9fccdf719fa" class="">Critical sections refer to regions where only one train can occupy the area at any given time. With this in mind, the following figure (Fig. 1) highlights the key areas of concern.</p><h3 id="10306135-8789-8098-8bc4-f70a155db275" class="">Stations</h3><p id="479dad7e-8f97-4ecb-88ee-c16c335fac96" class="">Each station — both North and South — has two tracks. Upon approaching a station, a fork determines whether the train enters the top or bottom track. If one of the tracks is already occupied, the approaching train automatically selects the available track. From a broader perspective, trains never face delays when entering a station because, with only two trains operating, at least one track is always available. This ensures smooth transitions and uninterrupted operations at the stations.</p><h3 id="a5704651-67d2-4272-a705-1b581be52781" class="">Stone and River Tracks</h3><p id="10306135-8789-80f4-8440-c032558e9b35" class="">The Stone and River Tracks are clearly critical sections, where only one train is allowed to pass through at a time. If a train is currently on the Stone Track, any approaching train must wait until it clears the section before entering. The same principle applies to the River Track: a train must wait if another train is already on it, ensuring no collisions occur within these narrow areas.</p><h3 id="10306135-8789-804f-b910-d3aa2c8693df" class="">Metal Track</h3><p id="10306135-8789-808b-aaa3-f15503ae0fff" class="">The Metal Track consists of two parallel lines, which can be accessed from either the left or right forks. These forks are located at the Stone and River Tracks, respectively. Despite the two-track system, proper coordination ensures no blockages occur at these junction points.</p><h3 id="48493572-4990-48b4-b301-641e22e723d6" class="">Diamond Crossing</h3><p id="10306135-8789-8085-93fa-d49099ddec84" class="">The Diamond Crossing, situated between the Top and Bottom North Stations, is a critical point where the tracks intersect. Naturally, only one train can pass through this crossing at a time to avoid collisions. If a train is currently crossing, any other train must wait until it is clear.</p><h3 id="10306135-8789-805e-bacb-e7618ef80f95" class="">Managing Critical Sections Programmatically</h3><p id="30d376d2-fb79-4826-b98b-35cb5368a9e0" class="">In the code, we handle these critical sections using semaphores to ensure that only one train can occupy a section at any given time. The enum <code>Track</code> defines each critical section in the system, including tracks, stations, and the diamond crossing. We initialize an array of semaphores corresponding to each track to control access to these sections.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10306135-8789-80e3-b2a5-da8ee099ab58" class="code"><code class="language-Java">enum Track {
+	DIAMOND_CROSSING,
+	RIVER_TRACK,
+	STONE_TRACK,
+	TOP_METAL_TRACK,
+	BOTTOM_METAL_TRACK,
+	TOP_SOUTH_STATION,
+	BOTTOM_SOUTH_STATION,
+	TOP_NORTH_STATION,
+	BOTTOM_NORTH_STATION
+};
+
+Semaphore[] semaphores = new Semaphore[Track.values().length]; </code></pre><h1 id="0e6f0a89-061b-476e-987d-daa2d7020761" class=""><mark class="highlight-blue">Placement of the sensors</mark></h1><figure id="10406135-8789-80e1-80ef-fddf8d1fd15d" class="image"><img style="width:816px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/7e26b0d6-290e-44d4-b791-8d21e74a5fc0/2456631d-bf18-4dd3-9dd1-e98833f5517b/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240917T183619Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=507f19d3d60baa3fea930b71de30763e508da7b2bc251f94fb5466d0771e3132&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject"/><figcaption>Fig 2. Sensors and switches.</figcaption></figure><p id="10306135-8789-802f-860c-d9172a33f788" class="">The placement of sensors is critical for the smooth operation of the train system, ensuring that each train can navigate the tracks while following correct directions and safely interacting with switches. The train’s interaction with the sensor is monitored using <code>tsi.getSensor(trainId)</code>. This method <strong>blocks</strong> the train&#x27;s thread until it passes over a sensor, giving the train&#x27;s current position and state (either active or inactive).</p><h3 id="10406135-8789-8065-8a8b-c04a27b1ec35" class="">Direction Enum</h3><p id="ea004c52-9d7f-46f5-832e-4a780ce1aad8" class="">Each train also maintains knowledge of its direction, which is key to understanding its interaction with sensors. For instance, a negative speed for Train 1 indicates it&#x27;s moving upward (north), and positive speed for Train 2 indicates it&#x27;s moving upward as well.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10306135-8789-8011-9010-d79b7fd6831e" class="code"><code class="language-Java">boolean getDirection() {
+  return (id == 1 &amp;&amp; speed &lt; 0) || (id == 2 &amp;&amp; speed &gt; 0);
+}</code></pre><h3 id="04fe6978-b972-41cd-9f73-e5cdc90a13d3" class="">Sensor Case Enum</h3><p id="2e1138e3-5acc-4f94-94b7-f243805dec71" class="">To further enhance code readability, an <code>enum</code> called <code>SensorCase</code> is introduced. The <code>SensorCase</code> has four states: <code>UP_BEFORE</code>, <code>UP_AFTER</code>, <code>DOWN_BEFORE</code>, and <code>DOWN_AFTER</code>. This classification helps determine the train&#x27;s relative position concerning a sensor and its movement.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10306135-8789-80db-90c7-d89f8d270809" class="code"><code class="language-Java">enum SensorCase {
+  UP_BEFORE, UP_AFTER, DOWN_BEFORE, DOWN_AFTER;
+
+  public static SensorCase get(boolean direction, boolean active) {
+    if (direction &amp;&amp; active) {
+      return UP_BEFORE;
+    } else if (direction &amp;&amp; !active) {
+      return UP_AFTER;
+    } else if (!direction &amp;&amp; active) {
+      return DOWN_BEFORE;
+    } else {
+      return DOWN_AFTER;
+    }
+  }
+}</code></pre><p id="10306135-8789-808b-bbce-c9bdc14cc7c8" class="">This enum simplifies the logic for determining if the train is moving up and stepping on the sensor (i.e., <strong>before</strong>), or if it has just passed it (<strong>after</strong>). Similarly, it helps to track if a train is moving down and either approaching or passing a sensor.</p><h3 id="10406135-8789-8006-8dc5-f09baa578b87" class="">Teal</h3><p id="10306135-8789-804f-b8f4-f6e083d6c604" class="">The sensors marked with <strong>teal</strong> are located at the stations. They control when a train should stop at a station, pause for a moment, and reverse its direction.<br/>At the <br/><strong>north station</strong>, the logic is triggered when a train is moving <strong>up</strong> and the sensor has just been activated (<code>UP_BEFORE</code>). At the <strong>south station</strong>, the logic is triggered when the train is moving <strong>down</strong> and the sensor is activated (<code>DOWN_BEFORE</code>).</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10306135-8789-8058-ae68-c52c38b2e958" class="code"><code class="language-Java">// stations
+else if (x == 13 &amp;&amp; (y == 5 || y == 3)) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      stopTrain();
+      break;
+  }
+} else if (x == 13 &amp;&amp; (y == 11 || y == 13)) {
+  switch (sensorCase) {
+    case DOWN_BEFORE:
+      stopTrain();
+      break;
+  }
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-80a5-add0-e6c17dcc024c" class="code"><code class="language-Java">void stopTrain() throws CommandException, InterruptedException {
+  tsi.setSpeed(id, 0);
+  sleep(1000 + (20 * Math.abs(speed)));
+  speed = -speed;
+  tsi.setSpeed(id, speed);
+}</code></pre><h3 id="10306135-8789-8032-aa5e-d82f3ab54884" class="">Green</h3><p id="10306135-8789-80f0-926d-f4edca7efe3f" class="">Sensors highlighted in <strong>green</strong> represent station forks. These are responsible for managing the switch settings based on the train’s movement and direction. For example, as a train moves down toward the <strong>south station</strong>, it will encounter a sensor at a fork. Here, the train must decide which track to take, and the switch is set accordingly: left for the <strong>top south station</strong> and right for the <strong>bottom south station</strong>.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10306135-8789-803f-9151-d59b9c7369b0" class="code"><code class="language-Java">// angles
+...
+else if (x == 1 &amp;&amp; y == 9) {
+  switch (sensorCase) {
+    ...
+    case DOWN_BEFORE:
+      if (semaphores[Track.TOP_SOUTH_STATION.ordinal()].tryAcquire()) {
+        tsi.setSwitch(3, 11, TSimInterface.SWITCH_LEFT);
+      } else {
+        semaphores[Track.BOTTOM_SOUTH_STATION.ordinal()].acquire();
+        tsi.setSwitch(3, 11, TSimInterface.SWITCH_RIGHT);
+      }
+			release(metalTrack);
+      break;
+  }
+}</code></pre><p id="10306135-8789-80db-b0cb-d04ff886caa2" class="">When a train leaves one of the station tracks, the south station fork sensors releases the station track:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-8054-a3d0-ec11379763d7" class="code"><code class="language-undefined">// south station fork
+else if (x == 7 &amp;&amp; y == 11) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      acquire(Track.STONE_TRACK);
+      release(Track.TOP_SOUTH_STATION);
+      tsi.setSwitch(3, 11, TSimInterface.SWITCH_LEFT);
+      break;
+    ...
+  }
+} else if (x == 6 &amp;&amp; y == 13) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      acquire(Track.STONE_TRACK);
+      release(Track.BOTTOM_SOUTH_STATION);
+      tsi.setSwitch(3, 11, TSimInterface.SWITCH_RIGHT);
+      break;
+    ...
+  }
+}</code></pre><h3 id="10406135-8789-80b4-866b-f9647ca346b6" class="">Orange</h3><p id="10406135-8789-80aa-904d-da9ae026b720" class="">The code snippet above shows the south station fork sensors are also used for acquiring the stone track. Sensors marked in <strong>orange</strong> monitor access to the <strong>stone track</strong>, a critical section that only one train can occupy at a time. The train must acquire the stone track, and if it’s unavailable, the train stops.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-8035-be52-de324148eafc" class="code"><code class="language-Java">void acquire(Track track) throws CommandException, InterruptedException {
+  tsi.setSpeed(id, 0); // get ready to be blocked
+  semaphores[track.ordinal()].acquire();
+  tsi.setSpeed(id, speed);
+}</code></pre><p id="10406135-8789-8053-98cf-f20f69cb3ca4" class="">The same logic applies when the train moves from the <strong>metal track</strong> to the <strong>stone track</strong>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-8072-8197-c6eab9041137" class="code"><code class="language-Java">// metal track
+else if (x == 9 &amp;&amp; y == 10) {
+  switch (sensorCase) {
+    ...
+    case DOWN_BEFORE:
+      release(Track.RIVER_TRACK);
+      acquire(Track.STONE_TRACK);
+      tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
+      break;
+  }
+} else if (x == 9 &amp;&amp; y == 9) {
+  switch (sensorCase) {
+    ...
+    case DOWN_BEFORE:
+      release(Track.RIVER_TRACK);
+      acquire(Track.STONE_TRACK);
+      tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
+      break;
+  }
+}</code></pre><p id="10406135-8789-8074-8cab-d316b7ab5885" class="">Stone track is released either on south station fork sensors or metal track sensors:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-8070-a88d-fe25a6869918" class="code"><code class="language-Java">// south station fork
+else if (x == 7 &amp;&amp; y == 11) {
+  switch (sensorCase) {
+    ...
+    case DOWN_AFTER:
+      release(Track.STONE_TRACK);
+      break;
+  }
+} else if (x == 6 &amp;&amp; y == 13) {
+  switch (sensorCase) {
+    ...
+    case DOWN_AFTER:
+      release(Track.STONE_TRACK);
+      break;
+  }
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f1c3ebcf-329d-413a-97e2-d922d108e30d" class="code"><code class="language-Java">// metal track
+else if (x == 9 &amp;&amp; y == 10) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      release(Track.STONE_TRACK);
+      acquire(Track.RIVER_TRACK);
+      tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
+      break;
+    ...
+  }
+} else if (x == 9 &amp;&amp; y == 9) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      release(Track.STONE_TRACK);
+      acquire(Track.RIVER_TRACK);
+      tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
+      break;
+   ...
+  }
+}</code></pre><h3 id="10406135-8789-805b-9974-e33acabf3ed0" class="">Pink</h3><p id="10406135-8789-802f-9995-d00ae7313685" class="">Sensors and switches marked in <strong>pink</strong> relate to the <strong>metal track</strong>, which can be entered from both directions. Like the stone track, only one train can occupy a metal track at a time. Since there are two tracks, a train never waits trying to acquire one of the metal tracks. Angle sensors are responsible for acquiring and releasing. The train also saves state <code>metalTrack</code> variable to know which of the metal tracks it was when releasing at angle sensors.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-80f9-8b26-d3e9201ee379" class="code"><code class="language-Java">// angles
+else if (x == 19 &amp;&amp; y == 9) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      if (semaphores[Track.TOP_NORTH_STATION.ordinal()].tryAcquire()) {
+        tsi.setSwitch(17, 7, TSimInterface.SWITCH_RIGHT);
+      } else {
+        semaphores[Track.BOTTOM_NORTH_STATION.ordinal()].acquire();
+        tsi.setSwitch(17, 7, TSimInterface.SWITCH_LEFT);
+      }
+      release(metalTrack);
+      break;
+    case DOWN_BEFORE:
+      if (semaphores[Track.TOP_METAL_TRACK.ordinal()].tryAcquire()) {
+        tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
+        metalTrack = Track.TOP_METAL_TRACK;
+      } else {
+        semaphores[Track.BOTTOM_METAL_TRACK.ordinal()].acquire();
+        tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
+        metalTrack = Track.BOTTOM_METAL_TRACK;
+      }
+      break;
+  }
+} else if (x == 1 &amp;&amp; y == 9) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      if (semaphores[Track.TOP_METAL_TRACK.ordinal()].tryAcquire()) {
+        tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
+        metalTrack = Track.TOP_METAL_TRACK;
+      } else {
+        semaphores[Track.BOTTOM_METAL_TRACK.ordinal()].acquire();
+        tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
+        metalTrack = Track.BOTTOM_METAL_TRACK;
+      }
+      break;
+    case DOWN_BEFORE:
+      if (semaphores[Track.TOP_SOUTH_STATION.ordinal()].tryAcquire()) {
+        tsi.setSwitch(3, 11, TSimInterface.SWITCH_LEFT);
+      } else {
+        semaphores[Track.BOTTOM_SOUTH_STATION.ordinal()].acquire();
+        tsi.setSwitch(3, 11, TSimInterface.SWITCH_RIGHT);
+      }
+      release(metalTrack);
+      break;
+  }
+}</code></pre><h3 id="10406135-8789-8028-9e1c-ca7deb2dceb2" class="">Yellow</h3><p id="10406135-8789-8055-9d91-eeb439c2a030" class="">Highlighted in <strong>yellow</strong> are sensors associated with the <strong>river track</strong>, functioning similarly to the stone track. River track is acquired and released either on metal track sensors or diamond crossing &amp; north station fork sensors:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-8030-a2c8-ee12c0d50f46" class="code"><code class="language-Java"> // metal track
+else if (x == 9 &amp;&amp; y == 10) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      release(Track.STONE_TRACK);
+      acquire(Track.RIVER_TRACK);
+      tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
+      break;
+    case DOWN_BEFORE:
+      release(Track.RIVER_TRACK);
+      acquire(Track.STONE_TRACK);
+      tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
+      break;
+  }
+} else if (x == 9 &amp;&amp; y == 9) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      release(Track.STONE_TRACK);
+      acquire(Track.RIVER_TRACK);
+      tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
+      break;
+    case DOWN_BEFORE:
+      release(Track.RIVER_TRACK);
+      acquire(Track.STONE_TRACK);
+      tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
+      break;
+  }
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-80d7-b76b-e84f228e2087" class="code"><code class="language-Java">// diamond crossing and north station fork
+else if (x == 12 &amp;&amp; y == 7) {
+  switch (sensorCase) {
+    ...    
+    case UP_AFTER:
+      release(Track.RIVER_TRACK);
+      break;
+    case DOWN_BEFORE:
+      release(Track.DIAMOND_CROSSING);
+      acquire(Track.RIVER_TRACK);
+      release(Track.TOP_NORTH_STATION);
+      tsi.setSwitch(17, 7, TSimInterface.SWITCH_RIGHT);
+      break;
+  }
+} else if (x == 12 &amp;&amp; y == 8) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      release(Track.RIVER_TRACK);
+      acquire(Track.DIAMOND_CROSSING);
+      break;
+    ...
+    case DOWN_BEFORE:
+      acquire(Track.RIVER_TRACK);
+      release(Track.BOTTOM_NORTH_STATION);
+      tsi.setSwitch(17, 7, TSimInterface.SWITCH_LEFT);
+      break;
+  }
+}</code></pre><h3 id="10406135-8789-80fd-b7f3-f0fdd3a83c2a" class="">Purple</h3><p id="10406135-8789-80ff-8c42-ff8d5b93a73e" class=""><strong>Purple sensors</strong> monitor the <strong>diamond crossing</strong>, ensuring smooth passage through this section. The train must acquire and release the crossing properly, allowing only one train through at a time.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-80a4-82f6-c7c09643e638" class="code"><code class="language-Java">// diamond crossing
+if (x == 6 &amp;&amp; y == 6 || x == 10 &amp;&amp; y == 5) {
+  switch (sensorCase) {
+    case UP_AFTER:
+      release(Track.DIAMOND_CROSSING);
+      break;
+    case DOWN_BEFORE:
+      acquire(Track.DIAMOND_CROSSING);
+      break;
+  }
+}
+// diamond crossing and north station fork
+else if (x == 12 &amp;&amp; y == 7) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      acquire(Track.DIAMOND_CROSSING);
+      break;
+    ...
+    case DOWN_BEFORE:
+      release(Track.DIAMOND_CROSSING);
+      acquire(Track.RIVER_TRACK);
+      release(Track.TOP_NORTH_STATION);
+      tsi.setSwitch(17, 7, TSimInterface.SWITCH_RIGHT);
+      break;
+  }
+} else if (x == 12 &amp;&amp; y == 8) {
+  switch (sensorCase) {
+    case UP_BEFORE:
+      release(Track.RIVER_TRACK);
+      acquire(Track.DIAMOND_CROSSING);
+      break;
+    case DOWN_AFTER:
+      release(Track.DIAMOND_CROSSING);
+      break;
+    ...
+  }
+}</code></pre><h3 id="4a298195-9301-401c-889d-08ff01246613" class="">Note</h3><p id="846623e0-fc1a-4ed8-95c4-8b614142f867" class="">An analogous situation can be observed for the <strong>north station</strong> as seen with the <strong>south station</strong>, where the sensors marked in <strong>teal</strong> stop the train, allow it to wait, and then reverse its direction when reaching the station.</p><p id="10406135-8789-8085-8ed3-c5cd37a8db22" class="">Similarly, the <strong>north station fork</strong>, marked in <strong>green</strong>, operates in the same way as the <strong>south station fork</strong>. When the train approaches the fork, the sensors help decide which track to acquire, adjusting the switch accordingly (left or right) based on track availability. </p><h1 id="10406135-8789-80de-b91f-e7a102a9bf1d" class=""><mark class="highlight-blue">Maximum train speed</mark></h1><p id="7c9d0b4f-cec2-4817-9365-339a6dc5e455" class="">The maximum train speed was tested and found to be around <strong>25</strong>. The upper speed limit is primarily dictated by the fact that trains do not come to an immediate stop, which can lead to overshooting critical points such as switches or sections where they could potentially collide with another train.</p><p id="eafea642-b2ab-454f-bfdf-a5376ba9b48e" class="">The sensors are placed carefully to make sure trains run smoothly and safely, even when they&#x27;re going fast. These sensors work well for different train speeds - whether trains are moving slowly, at top speed, or somewhere in between. This smart placement, on one hand, helps high-speed trains slow down in time before they reach important parts of the track. On the other hand, sensors keep performance even for slow trains.</p><h1 id="10406135-8789-808b-8e17-c0c9d25963e1" class=""><mark class="highlight-blue">How the solution was tested</mark></h1><p id="10406135-8789-8020-b4a3-ddbe0b684c49" class="">The solution was tested manually with the help of tsim simulator and run by the following command:<br/><br/><code>make all</code> &amp;&amp; <code>java -cp bin Main Lab1.map 20 25 15</code>,</p><p id="026b922f-95e2-4517-99df-d448443f743c" class="">where 20 represents the speed of the first train, 25 represents the speed of the second train, 15 depict the simulation speed. </p><p id="10406135-8789-800a-a1a6-e975790c4722" class="">The simulation was left running for ~1 min at a simulation speed of 2 (not recommended). </p><p id="10406135-8789-80b2-b02e-ce412a7eead4" class="">The following cases were covered:</p><table id="10406135-8789-809a-bb68-fae303332b0d" class="simple-table"><thead class="simple-table-header"><tr id="df623efe-82d3-4c29-9900-c705c551ce52"><th id="fDk}" class="simple-table-header-color simple-table-header" style="width:185.1671142578125px"><strong>speed #1</strong></th><th id="cQav" class="simple-table-header-color simple-table-header" style="width:186.994384765625px"><strong>speed #2</strong></th></tr></thead><tbody><tr id="78c04d07-c96d-4385-9d03-81f6cf6c6ce7"><td id="fDk}" class="" style="width:185.1671142578125px">25</td><td id="cQav" class="" style="width:186.994384765625px">25</td></tr><tr id="6aca96f5-8bd3-4488-ae36-931ff34b812a"><td id="fDk}" class="" style="width:185.1671142578125px">20</td><td id="cQav" class="" style="width:186.994384765625px">25</td></tr><tr id="71a52485-39bc-419d-b27e-243d448cec59"><td id="fDk}" class="" style="width:185.1671142578125px">25</td><td id="cQav" class="" style="width:186.994384765625px">20</td></tr><tr id="d008425c-ce56-45ab-a339-90224dedd714"><td id="fDk}" class="" style="width:185.1671142578125px">15</td><td id="cQav" class="" style="width:186.994384765625px">20</td></tr><tr id="722ab365-cab8-4497-82ec-167acc6bc8f5"><td id="fDk}" class="" style="width:185.1671142578125px">20</td><td id="cQav" class="" style="width:186.994384765625px">15</td></tr><tr id="a2a245af-b89a-42b2-b271-42a0bbb27d61"><td id="fDk}" class="" style="width:185.1671142578125px">15</td><td id="cQav" class="" style="width:186.994384765625px">10</td></tr><tr id="2ba08e6e-469d-4e24-9cc2-fe24c7931709"><td id="fDk}" class="" style="width:185.1671142578125px">10</td><td id="cQav" class="" style="width:186.994384765625px">15</td></tr><tr id="e49ba96c-3372-4c63-b3a0-d5776622943d"><td id="fDk}" class="" style="width:185.1671142578125px">10</td><td id="cQav" class="" style="width:186.994384765625px">10</td></tr><tr id="2c25ecd2-b3ba-4796-867f-391328d89f96"><td id="fDk}" class="" style="width:185.1671142578125px">10</td><td id="cQav" class="" style="width:186.994384765625px">5</td></tr><tr id="10406135-8789-80eb-a9e6-feef19da813d"><td id="fDk}" class="" style="width:185.1671142578125px">5</td><td id="cQav" class="" style="width:186.994384765625px">10</td></tr><tr id="10406135-8789-805f-af08-db9720532df1"><td id="fDk}" class="" style="width:185.1671142578125px">5</td><td id="cQav" class="" style="width:186.994384765625px">5</td></tr><tr id="7331556a-2e4d-4c33-b5a8-310f9cb2b847"><td id="fDk}" class="" style="width:185.1671142578125px">25</td><td id="cQav" class="" style="width:186.994384765625px">5</td></tr><tr id="10406135-8789-806d-ace5-cc5121dc0c6a"><td id="fDk}" class="" style="width:185.1671142578125px">5</td><td id="cQav" class="" style="width:186.994384765625px">25</td></tr><tr id="10406135-8789-805b-b104-caf25a38f2b9"><td id="fDk}" class="" style="width:185.1671142578125px">25</td><td id="cQav" class="" style="width:186.994384765625px">10</td></tr><tr id="10406135-8789-8093-962a-edfe26c5409c"><td id="fDk}" class="" style="width:185.1671142578125px">10</td><td id="cQav" class="" style="width:186.994384765625px">25</td></tr></tbody></table><h1 id="10406135-8789-806e-99f8-e1dcf54ad0b8" class=""><mark class="highlight-blue">Listing of developed programs</mark></h1><p id="10406135-8789-80e7-a5de-e3c228da8479" class="">Lab1.java</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10406135-8789-806a-9671-fcb182f7d55b" class="code"><code class="language-Java">import TSim.*;
+
+import java.util.concurrent.Semaphore;
+import static java.lang.Thread.sleep;
+
+public class Lab1 {
+  enum Track {
+    DIAMOND_CROSSING,
+    RIVER_TRACK,
+    STONE_TRACK,
+    TOP_METAL_TRACK,
+    BOTTOM_METAL_TRACK,
+    TOP_SOUTH_STATION,
+    BOTTOM_SOUTH_STATION,
+    TOP_NORTH_STATION,
+    BOTTOM_NORTH_STATION
+  };
+
+  Semaphore[] semaphores = new Semaphore[Track.values().length];
+
+  enum SensorCase {
+    UP_BEFORE, UP_AFTER, DOWN_BEFORE, DOWN_AFTER;
+
+    public static SensorCase get(boolean direction, boolean active) {
+      if (direction &amp;&amp; active) {
+        return UP_BEFORE;
+      } else if (direction &amp;&amp; !active) {
+        return UP_AFTER;
+      } else if (!direction &amp;&amp; active) {
+        return DOWN_BEFORE;
+      } else {
+        return DOWN_AFTER;
+      }
+    }
+  }
+
+  public Lab1(int speed1, int speed2) {
+    TSimInterface tsi = TSimInterface.getInstance();
+    tsi.setDebug(false);
+
+    for (int i = 0; i &lt; Track.values().length; i++) {
+      semaphores[i] = new Semaphore(1);
+    }
+
+    try {
+      tsi.setSpeed(1, speed1);
+      tsi.setSpeed(2, speed2);
+    } catch (CommandException e) {
+      e.printStackTrace();
+      System.exit(1);
+    }
+
+    class Train implements Runnable {
+      int id;
+      int speed;
+      Track metalTrack;
+
+      Train(int id, int speed, Track track) {
+        this.id = id;
+        this.speed = speed;
+
+        // acquire default semaphore
+        semaphores[track.ordinal()] = new Semaphore(0);
+      }
+
+      boolean getDirection() {
+        return (id == 1 &amp;&amp; speed &lt; 0) || (id == 2 &amp;&amp; speed &gt; 0);
+      }
+
+      void acquire(Track track) throws CommandException, InterruptedException {
+        tsi.setSpeed(id, 0); // get ready to be blocked
+        semaphores[track.ordinal()].acquire();
+        tsi.setSpeed(id, speed);
+      }
+
+      void release(Track track) {
+        semaphores[track.ordinal()].release();
+      }
+
+      void stopTrain() throws CommandException, InterruptedException {
+        tsi.setSpeed(id, 0);
+        sleep(1000 + (20 * Math.abs(speed)));
+        speed = -speed;
+        tsi.setSpeed(id, speed);
+      }
+
+      @SuppressWarnings(&quot;incomplete-switch&quot;)
+      @Override
+      public void run() {
+        try {
+          while (true) {
+            SensorEvent sensor = tsi.getSensor(id);
+
+            int x = sensor.getXpos();
+            int y = sensor.getYpos();
+            SensorCase sensorCase = SensorCase.get(getDirection(), sensor.getStatus() == SensorEvent.ACTIVE);
+
+            // diamond crossing
+            if (x == 6 &amp;&amp; y == 6 || x == 10 &amp;&amp; y == 5) {
+              switch (sensorCase) {
+                case UP_AFTER:
+                  release(Track.DIAMOND_CROSSING);
+                  break;
+                case DOWN_BEFORE:
+                  acquire(Track.DIAMOND_CROSSING);
+                  break;
+              }
+            }
+            // diamond crossing and north station fork
+            else if (x == 12 &amp;&amp; y == 7) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  acquire(Track.DIAMOND_CROSSING);
+                  break;
+                case UP_AFTER:
+                  release(Track.RIVER_TRACK);
+                  break;
+                case DOWN_BEFORE:
+                  release(Track.DIAMOND_CROSSING);
+                  acquire(Track.RIVER_TRACK);
+                  release(Track.TOP_NORTH_STATION);
+                  tsi.setSwitch(17, 7, TSimInterface.SWITCH_RIGHT);
+                  break;
+              }
+            } else if (x == 12 &amp;&amp; y == 8) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  release(Track.RIVER_TRACK);
+                  acquire(Track.DIAMOND_CROSSING);
+                  break;
+                case DOWN_AFTER:
+                  release(Track.DIAMOND_CROSSING);
+                  break;
+                case DOWN_BEFORE:
+                  acquire(Track.RIVER_TRACK);
+                  release(Track.BOTTOM_NORTH_STATION);
+                  tsi.setSwitch(17, 7, TSimInterface.SWITCH_LEFT);
+                  break;
+              }
+            }
+            // south station fork
+            else if (x == 7 &amp;&amp; y == 11) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  acquire(Track.STONE_TRACK);
+                  release(Track.TOP_SOUTH_STATION);
+                  tsi.setSwitch(3, 11, TSimInterface.SWITCH_LEFT);
+                  break;
+                case DOWN_AFTER:
+                  release(Track.STONE_TRACK);
+                  break;
+              }
+            } else if (x == 6 &amp;&amp; y == 13) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  acquire(Track.STONE_TRACK);
+                  release(Track.BOTTOM_SOUTH_STATION);
+                  tsi.setSwitch(3, 11, TSimInterface.SWITCH_RIGHT);
+                  break;
+                case DOWN_AFTER:
+                  release(Track.STONE_TRACK);
+                  break;
+              }
+            }
+            // metal track
+            else if (x == 9 &amp;&amp; y == 10) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  release(Track.STONE_TRACK);
+                  acquire(Track.RIVER_TRACK);
+                  tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
+                  break;
+                case DOWN_BEFORE:
+                  release(Track.RIVER_TRACK);
+                  acquire(Track.STONE_TRACK);
+                  tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
+                  break;
+              }
+            } else if (x == 9 &amp;&amp; y == 9) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  release(Track.STONE_TRACK);
+                  acquire(Track.RIVER_TRACK);
+                  tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
+                  break;
+                case DOWN_BEFORE:
+                  release(Track.RIVER_TRACK);
+                  acquire(Track.STONE_TRACK);
+                  tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
+                  break;
+              }
+            }
+            // angles
+            else if (x == 19 &amp;&amp; y == 9) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  if (semaphores[Track.TOP_NORTH_STATION.ordinal()].tryAcquire()) {
+                    tsi.setSwitch(17, 7, TSimInterface.SWITCH_RIGHT);
+                  } else {
+                    semaphores[Track.BOTTOM_NORTH_STATION.ordinal()].acquire();
+                    tsi.setSwitch(17, 7, TSimInterface.SWITCH_LEFT);
+                  }
+                  release(metalTrack);
+                  break;
+                case DOWN_BEFORE:
+                  if (semaphores[Track.TOP_METAL_TRACK.ordinal()].tryAcquire()) {
+                    tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
+                    metalTrack = Track.TOP_METAL_TRACK;
+                  } else {
+                    semaphores[Track.BOTTOM_METAL_TRACK.ordinal()].acquire();
+                    tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
+                    metalTrack = Track.BOTTOM_METAL_TRACK;
+                  }
+                  break;
+              }
+            } else if (x == 1 &amp;&amp; y == 9) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  if (semaphores[Track.TOP_METAL_TRACK.ordinal()].tryAcquire()) {
+                    tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
+                    metalTrack = Track.TOP_METAL_TRACK;
+                  } else {
+                    semaphores[Track.BOTTOM_METAL_TRACK.ordinal()].acquire();
+                    tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
+                    metalTrack = Track.BOTTOM_METAL_TRACK;
+                  }
+                  break;
+                case DOWN_BEFORE:
+                  if (semaphores[Track.TOP_SOUTH_STATION.ordinal()].tryAcquire()) {
+                    tsi.setSwitch(3, 11, TSimInterface.SWITCH_LEFT);
+                  } else {
+                    semaphores[Track.BOTTOM_SOUTH_STATION.ordinal()].acquire();
+                    tsi.setSwitch(3, 11, TSimInterface.SWITCH_RIGHT);
+                  }
+                  release(metalTrack);
+                  break;
+              }
+            }
+            // stations
+            else if (x == 13 &amp;&amp; (y == 5 || y == 3)) {
+              switch (sensorCase) {
+                case UP_BEFORE:
+                  stopTrain();
+                  break;
+              }
+            } else if (x == 13 &amp;&amp; (y == 11 || y == 13)) {
+              switch (sensorCase) {
+                case DOWN_BEFORE:
+                  stopTrain();
+                  break;
+              }
+            }
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+    }
+
+    new Thread(new Train(1, speed1, Track.TOP_NORTH_STATION)).start();
+    new Thread(new Train(2, speed2, Track.TOP_SOUTH_STATION)).start();
+  }
+}</code></pre></div></article></body></html>
