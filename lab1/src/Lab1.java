@@ -53,6 +53,7 @@ public class Lab1 {
     class Train implements Runnable {
       int id;
       int speed;
+      Track metalTrack;
 
       Train(int id, int speed, Track track) {
         this.id = id;
@@ -168,13 +169,11 @@ public class Lab1 {
                   release(Track.STONE_TRACK);
                   acquire(Track.RIVER_TRACK);
                   tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
-                  release(Track.BOTTOM_METAL_TRACK);
                   break;
                 case DOWN_BEFORE:
                   release(Track.RIVER_TRACK);
                   acquire(Track.STONE_TRACK);
                   tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
-                  release(Track.BOTTOM_METAL_TRACK);
                   break;
               }
             } else if (x == 9 && y == 9) {
@@ -183,13 +182,11 @@ public class Lab1 {
                   release(Track.STONE_TRACK);
                   acquire(Track.RIVER_TRACK);
                   tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
-                  release(Track.TOP_METAL_TRACK);
                   break;
                 case DOWN_BEFORE:
                   release(Track.RIVER_TRACK);
                   acquire(Track.STONE_TRACK);
                   tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
-                  release(Track.TOP_METAL_TRACK);
                   break;
               }
             }
@@ -203,13 +200,16 @@ public class Lab1 {
                     semaphores[Track.BOTTOM_NORTH_STATION.ordinal()].acquire();
                     tsi.setSwitch(17, 7, TSimInterface.SWITCH_LEFT);
                   }
+                  release(metalTrack);
                   break;
                 case DOWN_BEFORE:
                   if (semaphores[Track.TOP_METAL_TRACK.ordinal()].tryAcquire()) {
                     tsi.setSwitch(15, 9, TSimInterface.SWITCH_RIGHT);
+                    metalTrack = Track.TOP_METAL_TRACK;
                   } else {
                     semaphores[Track.BOTTOM_METAL_TRACK.ordinal()].acquire();
                     tsi.setSwitch(15, 9, TSimInterface.SWITCH_LEFT);
+                    metalTrack = Track.BOTTOM_METAL_TRACK;
                   }
                   break;
               }
@@ -218,9 +218,11 @@ public class Lab1 {
                 case UP_BEFORE:
                   if (semaphores[Track.TOP_METAL_TRACK.ordinal()].tryAcquire()) {
                     tsi.setSwitch(4, 9, TSimInterface.SWITCH_LEFT);
+                    metalTrack = Track.TOP_METAL_TRACK;
                   } else {
                     semaphores[Track.BOTTOM_METAL_TRACK.ordinal()].acquire();
                     tsi.setSwitch(4, 9, TSimInterface.SWITCH_RIGHT);
+                    metalTrack = Track.BOTTOM_METAL_TRACK;
                   }
                   break;
                 case DOWN_BEFORE:
@@ -230,6 +232,7 @@ public class Lab1 {
                     semaphores[Track.BOTTOM_SOUTH_STATION.ordinal()].acquire();
                     tsi.setSwitch(3, 11, TSimInterface.SWITCH_RIGHT);
                   }
+                  release(metalTrack);
                   break;
               }
             }
